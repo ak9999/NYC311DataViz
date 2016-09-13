@@ -1,9 +1,9 @@
 # Meet the Team
 
 __Abdullah Khan__
-    * Senior attending Hunter College -  New York, NY
-    * DevOps
-    * Full Stack Developer
+* Senior attending Hunter College -  New York, NY
+* DevOps
+* Full Stack Developer
 
 
 __Vincent Chen__
