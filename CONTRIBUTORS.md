@@ -7,13 +7,20 @@ __Abdullah Khan__
 
 
 __Vincent Chen__
-*Senior attending Hunter College
-*Front end Developer
-*Working with Javascript and HTML
+* Attending Hunter College
+* Front end Developer
+* Working with Javascript and HTML
+
+
 
 __Pablo Rivera__
+* Senior at Hunter College - New York, NY
+* Ready to Learn. 
+* JavaScript / HTML 
+
+
 
 __Shafiul Ahmed__
-*Senior at Hunter College - New York, NY
-*Very knowledgeable of New York City agencies and their procedures.
-*Will be working with JavaScript and HTML to accomplish group goals.
+* Senior at Hunter College - New York, NY
+* Very knowledgeable of New York City agencies and their procedures.
+* Will be working with JavaScript and HTML to accomplish group goals.
