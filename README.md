@@ -1,9 +1,13 @@
 # Visualization of NYC 311 Service Requests
 
 ## Requirements
+* MongoDB
 * Python 3
 	* Knowledge of how to set up a virtual environment
 	Tutorial here: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
+* Numpy
+* Pandas
+* PyMongo
 
 ## Setup
 
