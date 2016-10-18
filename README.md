@@ -8,6 +8,7 @@
 * Numpy
 * Pandas
 * PyMongo
+* Flask
 
 ## Setup
 
