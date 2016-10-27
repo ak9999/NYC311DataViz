@@ -4,13 +4,18 @@ from flask import render_template
 app = Flask(__name__)
 
 
-@app.route('/')  # Decorator tells Flask what URL should trigger our function
+@app.route('/')
 def index():
-	"""Returns a static page."""
-	return render_template('index.html')
+	"""
+	Returns a static page.
+
+	The decorator @app.route('/') tells Flask which URL should trigger our
+		function. In this case, '/' is our index.html
+	"""
+	return render_template('index.html')  # Renders index.html
 '''
 To actually run this, we need to export the environment variable
-"FLASK_APP", ex: export FLASK_APP=hello.py
+"FLASK_APP", ex: export FLASK_APP=app.py
 '''
 
 if __name__ == '__main__':
