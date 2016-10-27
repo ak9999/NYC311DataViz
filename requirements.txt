@@ -8,6 +8,7 @@ Flask==0.11.1
 Flask-Bootstrap==3.3.7.0
 flask-nav==0.5
 Flask-WTF==0.13.1
+googlemaps==2.4.4
 ipykernel==4.5.0
 ipython==5.1.0
 ipython-genutils==0.1.0
@@ -41,7 +42,7 @@ pytz==2016.6.1
 PyYAML==3.12
 pyzmq==15.4.0
 qtconsole==4.2.1
-requests==2.11.1
+requests==2.10.0
 simplegeneric==0.8.1
 six==1.10.0
 tables==3.3.0
