@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
@@ -17,9 +18,25 @@ def index():
 
 @app.route('/about')
 def about():
-    """Returns the about page, which for now is just index.html"""
-    return render_template('about.html')
+	"""Returns the about page, which for now is just index.html"""
+	return render_template('about.html')
 
+
+@app.route('/query')
+def query():
+	# Connect to database
+	try:
+		client = MongoClient('mongodb://localhost:27017/')
+		print('Connection successful.')
+	except:
+		print('Could not connect to MongoDB')
+		return
+
+
+	db = client.requests  # Database
+	collection = db.sr    # Collection within database
+
+	return collection.find_one({'Complaint Type':'Special Enforcement'}).count
 
 '''
 To actually run this, we need to export the environment variable
