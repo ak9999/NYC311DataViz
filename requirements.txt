@@ -8,6 +8,7 @@ Flask==0.11.1
 Flask-Bootstrap==3.3.7.0
 flask-nav==0.5
 Flask-WTF==0.13.1
+folium==0.2.1
 googlemaps==2.4.4
 ipykernel==4.5.0
 ipython==5.1.0
