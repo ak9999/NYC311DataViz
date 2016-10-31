@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
-
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<style>
+        #map { width: 800px; height: 600px; }
+    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,11 +23,11 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-    <!-- Plugin CSS -->
-    <link href="static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Theme CSS -->
     <link href="static/css/creative.min.css" rel="stylesheet">
+
+	
 
 
 </head>
@@ -57,13 +61,28 @@
         </div>
     </header>
 
+
     <aside class="bg-primary">
         <div class="container text-center">
             <div class="call-to-action">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Vincent Chen</h2>
-                    <hr class="light">
-                    <p>Front-End and Flask</p>
+	<div id="map"></div>
+
+<script src="../static/dist/leaflet-heat.js"></script>
+
+<script src="/static/js/test.js"></script>
+	<script>
+
+	var map = L.map('map').setView([-37.87, 175.475], 12);
+
+	var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	}).addTo(map);
+
+	addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
+
+	var heat = L.heatLayer(addressPoints).addTo(map);
+
+	</script>
                 </div>
             </div>
         </div>
