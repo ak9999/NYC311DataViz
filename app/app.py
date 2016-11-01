@@ -24,8 +24,8 @@ def about():
 	return render_template('about.html')
 
 
-@app.route('/query')
-def query(search='Special Enforcement'):
+@app.route('/query/<request_type>')
+def query(column='Complaint Type', request_type='Special Enforcement'):
 	'''Returns a very simple query and shows it on the webpage'''
 	def show_it():
 		# Connect to database
@@ -41,7 +41,7 @@ def query(search='Special Enforcement'):
 		collection = db.sr    # Collection within database
 
 		# pymongo's 'find' returns a Cursor object that must be iterated over.
-		for x in collection.find({'Complaint Type': search})[:25]:
+		for x in collection.find({column: request_type})[:75]:
 			yield '{}<br>\n'.format(x)
 
 	return Response(show_it(), mimetype='text/html')
