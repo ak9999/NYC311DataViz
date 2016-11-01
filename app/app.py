@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
+@app.route('/index.html')
 def index():
 	"""
 	Returns a static page.
@@ -24,7 +25,7 @@ def about():
 
 
 @app.route('/query')
-def query():
+def query(search='Special Enforcement'):
 	'''Returns a very simple query and shows it on the webpage'''
 	def show_it():
 		# Connect to database
@@ -41,12 +42,12 @@ def query():
 		print(
 			'# of documents: ' + \
 			str(
-				collection.find({'Complaint Type': 'Special Enforcement'}).count()
+				collection.find({'Complaint Type': search}).count()
 			   )
 			)
 
 		# pymongo's 'find' returns a Cursor object that must be iterated over.
-		for x in collection.find({'Complaint Type': 'Special Enforcement'}):
+		for x in collection.find({'Complaint Type': search})[:25]:
 			yield '{}<br>\n'.format(x)
 
 	return Response(show_it(), mimetype='text/html')
