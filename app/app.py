@@ -24,9 +24,10 @@ def about():
 	return render_template('about.html')
 
 @app.route('/query')
+@app.route('/query/')
 @app.route('/query/<request_type>')
 def query(column='Complaint Type', request_type='Special Enforcement'):
-	'''Returns a very simple query and shows it on the webpage'''
+	'''Returns Latitude and Longitude of issues.'''
 	def show_it():
 		# Connect to database
 		try:
@@ -43,7 +44,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 		projection = {'_id': False, 'Latitude': True, 'Longitude': True}
 
 		# pymongo's 'find' returns a Cursor object that must be iterated over.
-		for x in collection.find({column: request_type}, projection)[:75]:
+		for x in collection.find({column: request_type}, projection)[:5000]:
 			yield '{}<br>\n'.format(x)
 
 	return Response(show_it(), mimetype='text/html')
@@ -51,6 +52,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 '''
 To actually run this, we need to export the environment variable
 "FLASK_APP", ex: export FLASK_APP=app.py
+Or just python3 app/app.py
 '''
 
 if __name__ == '__main__':
