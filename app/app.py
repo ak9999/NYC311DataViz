@@ -39,12 +39,6 @@ def query(search='Special Enforcement'):
 
 		db = client.requests  # Database
 		collection = db.sr    # Collection within database
-		print(
-			'# of documents: ' + \
-			str(
-				collection.find({'Complaint Type': search}).count()
-			   )
-			)
 
 		# pymongo's 'find' returns a Cursor object that must be iterated over.
 		for x in collection.find({'Complaint Type': search})[:25]:
