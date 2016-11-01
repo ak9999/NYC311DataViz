@@ -23,7 +23,7 @@ def about():
 	"""Returns the about page, which for now is just index.html"""
 	return render_template('about.html')
 
-
+@app.route('/query')
 @app.route('/query/<request_type>')
 def query(column='Complaint Type', request_type='Special Enforcement'):
 	'''Returns a very simple query and shows it on the webpage'''
@@ -40,8 +40,10 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 		db = client.requests  # Database
 		collection = db.sr    # Collection within database
 
+		projection = {'_id': False, 'Latitude': True, 'Longitude': True}
+
 		# pymongo's 'find' returns a Cursor object that must be iterated over.
-		for x in collection.find({column: request_type})[:75]:
+		for x in collection.find({column: request_type}, projection)[:75]:
 			yield '{}<br>\n'.format(x)
 
 	return Response(show_it(), mimetype='text/html')
