@@ -46,7 +46,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 		print('Successfully obtained coordinates.')
 		return json_util.dumps({'latlong': coordinates})  # Convert query results to json and return
 
-	return Response(show_it(), mimetype='text/javascript')  # Return the result of show_it()
+	return Response(show_it(), mimetype='application/json')  # Return the result of show_it()
 
 
 # Run within virtual environment with python3 app/app.py
