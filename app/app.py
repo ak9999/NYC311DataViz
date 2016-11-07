@@ -43,15 +43,13 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 		collection = db.sr    # Collection within database
 		projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
 		coordinates = collection.find({column: request_type}, projection)
+		print('Successfully obtained coordinates.')
 		return json_util.dumps({'latlong': coordinates})  # Convert query results to json and return
 
 	return Response(show_it(), mimetype='text/javascript')  # Return the result of show_it()
 
-'''
-To actually run this, we need to export the environment variable
-"FLASK_APP", ex: export FLASK_APP=app.py
-Or just python3 app/app.py
-'''
+
+# Run within virtual environment with python3 app/app.py
 
 if __name__ == '__main__':
 	app.run()
