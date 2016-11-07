@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import Response
 from pymongo import MongoClient
+from bson import json_util
 
 app = Flask(__name__)
 
@@ -23,9 +24,9 @@ def about():
 	"""Returns the about page, which for now is just index.html"""
 	return render_template('about.html')
 
-@app.route('/query')
-@app.route('/query/')
-@app.route('/query/<request_type>')
+@app.route('/query', methods=['GET'])
+@app.route('/query/', methods=['GET'])
+@app.route('/query/<request_type>', methods=['GET'])
 def query(column='Complaint Type', request_type='Special Enforcement'):
 	'''Returns Latitude and Longitude of issues.'''
 	def show_it():
@@ -40,14 +41,11 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 
 		db = client.requests  # Database
 		collection = db.sr    # Collection within database
+		projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
+		coordinates = collection.find({column: request_type}, projection)
+		return json_util.dumps({'latlong': coordinates})  # Convert query results to json and return
 
-		projection = {'_id': False, 'Latitude': True, 'Longitude': True}
-
-		# pymongo's 'find' returns a Cursor object that must be iterated over.
-		for x in collection.find({column: request_type}, projection)[:5000]:
-			yield '{}<br>\n'.format(x)
-
-	return Response(show_it(), mimetype='text/html')
+	return Response(show_it(), mimetype='text/javascript')  # Return the result of show_it()
 
 '''
 To actually run this, we need to export the environment variable
