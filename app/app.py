@@ -42,8 +42,8 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 		db = client.requests  # Database
 		collection = db.sr    # Collection within database
 		projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
-		coordinates = collection.find({column: request_type}, projection)
-		print('Successfully obtained coordinates.')
+		coordinates = collection.find({column: request_type}, projection) # MongoDB Cursor object, iterable.
+		print('Successfully obtained {} coordinates.'.format(coordinates.count()))
 		return json_util.dumps({'latlong': coordinates})  # Convert query results to json and return
 
 	return Response(show_it(), mimetype='application/json')  # Return the result of show_it()
