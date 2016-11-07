@@ -1,8 +1,8 @@
 from flask import Flask
 from flask import render_template
 from flask import Response
-from pymongo import MongoClient
 from bson import json_util
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
@@ -54,19 +54,20 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 @app.route('/nypd', methods=['GET'])
 def GetNYPDResponses():
 	'''Returns JSON object of coordinates for each instance responded to by the NYPD.'''
+	
 	# Connect to database
 	try:
 		client = MongoClient('mongodb://localhost:27017/')
 		print('Connection successful.')
 	except:
 		print('Could not connect to MongoDB')
-		return
+		exit()
 
 	db = client.requests  # Database
 	collection = db.sr    # Collection within database
 	projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
 	coordinates = collection.find({'Agency': 'NYPD'}, projection) # MongoDB Cursor object, iterable.
-	print('Successfully obtained {} coordinates.'.format(coordinates.count()))
+	print('Successfully obtained {} coordinates.'.format(collection.count()))
 
 	def jsonify(query_result):
 		return json_util.dumps({'latlong': query_result})  # Convert query results to json and return
