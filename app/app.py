@@ -54,7 +54,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 @app.route('/nypd', methods=['GET'])
 def GetNYPDResponses():
 	'''Returns JSON object of coordinates for each instance responded to by the NYPD.'''
-	
+
 	# Connect to database
 	try:
 		client = MongoClient('mongodb://localhost:27017/')
@@ -67,12 +67,38 @@ def GetNYPDResponses():
 	collection = db.sr    # Collection within database
 	projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
 	coordinates = collection.find({'Agency': 'NYPD'}, projection) # MongoDB Cursor object, iterable.
-	print('Successfully obtained {} coordinates.'.format(collection.count()))
+	print('Successfully obtained {} coordinates.'.format(coordinates.count()))
 
 	def jsonify(query_result):
 		return json_util.dumps({'latlong': query_result})  # Convert query results to json and return
 
 	return Response(jsonify(coordinates), mimetype='application/json')
+
+
+@app.route('/bees', methods=['GET'])
+def beeswasps():
+	'''Returns JSON object of coordinates for bees.'''
+
+	# Connect to database
+	try:
+		client = MongoClient('mongodb://localhost:27017/')
+		print('Connection successful.')
+	except:
+		print('Could not connect to MongoDB')
+		exit()
+
+	db = client.requests  # Database
+	collection = db.sr    # Collection within database
+	projection = {'_id': False, 'Latitude': True, 'Longitude': True, 'Descriptor': True}  # Properties we want.
+	coordinates = collection.find({'Complaint Type': 'Harboring Bees/Wasps'}, projection) # MongoDB Cursor object, iterable.
+	print('Successfully obtained {} coordinates.'.format(coordinates.count()))
+
+	def jsonify(query_result):
+		return json_util.dumps({'latlong': query_result})  # Convert query results to json and return
+
+	return Response(jsonify(coordinates), mimetype='application/json')
+
+
 # Run within virtual environment with python3 app/app.py
 
 if __name__ == '__main__':
