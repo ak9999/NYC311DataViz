@@ -71,7 +71,6 @@
 <script src="../static/dist/leaflet-heat.js"></script>
 
 <script src="/static/js/test.js"></script>
-<script src="/static/js/simplequery.js"></script>
     <!-- Create map and set view to center on Hunter College. -->
 	<script>
 
@@ -79,6 +78,9 @@
 
 	var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	}).addTo(map);
+
+    var bees = httpGetAsync('http://localhost:5000/bees', function());
+    console.log(bees);
 
 	addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 
