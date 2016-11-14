@@ -55,7 +55,7 @@
                 <hr>
                 <p>
                     Made with Python<br>
-                    Using Bootstrap, Flask, and the Google Maps API
+                    Using Bootstrap, Flask, MongoDB, and leaflet.js
                 </p>
             </div>
         </div>
@@ -71,9 +71,11 @@
 <script src="../static/dist/leaflet-heat.js"></script>
 
 <script src="/static/js/test.js"></script>
+<script src="/static/js/simplequery.js"></script>
+    <!-- Create map and set view to center on Hunter College. -->
 	<script>
 
-	var map = L.map('map').setView([-37.87, 175.475], 12);
+	var map = L.map('map').setView([40.768890, -73.964789], 12);
 
 	var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	}).addTo(map);
@@ -125,7 +127,7 @@
     </aside>
 
     <!-- jQuery -->
-    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
