@@ -30,7 +30,7 @@ for each in coordinates:
     if each['Latitude'] and each['Longitude']:
         description = '<p>Responding Agency: {}<br>Description: {}</p>'.format(each['Agency'], each['Descriptor'])
         iframe = folium.element.IFrame(html=description, width=300, height=85)
-        popup = folium.Popup(iframe, max_width=2650)
+        popup = folium.Popup(iframe, max_width=300)
         folium.Marker([each['Latitude'], each['Longitude']], popup=popup).add_to(bees_map)
 
 bees_map.save('bees.html')
