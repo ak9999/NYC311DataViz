@@ -69,6 +69,7 @@
 	<div id="map"></div>
 
 <script src="../static/dist/leaflet-heat.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
 
 <script src="/static/js/test.js"></script>
     <!-- Create map and set view to center on Hunter College. -->
@@ -79,10 +80,17 @@
 	var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	}).addTo(map);
 
-    var bees = httpGetAsync('http://localhost:5000/bees', function());
-    console.log(bees);
+    // Get the JSON object of the query at the following URL.
+    var bees = $.getJSON("http://localhost:5000/bees", function() {
+    });
 
-	addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
+    console.log(bees); // Print to console.
+
+    // for (var prop in bees) {
+    //     var obj = bees[prop];
+    //     console.log(obj);
+    // }
+	//addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 
 	var heat = L.heatLayer(addressPoints).addTo(map);
 
