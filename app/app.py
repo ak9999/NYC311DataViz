@@ -46,7 +46,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 	print('Successfully obtained {} coordinates.'.format(coordinates.count()))
 
 	def jsonify(query_result):
-		return json_util.dumps({'latlong': query_result})  # Convert query results to json and return
+		return json_util.dumps(query_result)  # Convert query results to json and return
 
 	return Response(jsonify(coordinates), mimetype='application/json')  # Return the result of show_it()
 
@@ -70,7 +70,7 @@ def GetNYPDResponses():
 	print('Successfully obtained {} coordinates.'.format(coordinates.count()))
 
 	def jsonify(query_result):
-		return json_util.dumps({'latlong': query_result})  # Convert query results to json and return
+		return json_util.dumps(query_result)  # Convert query results to json and return
 
 	return Response(jsonify(coordinates), mimetype='application/json')
 
