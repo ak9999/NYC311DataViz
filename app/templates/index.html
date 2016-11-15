@@ -81,18 +81,20 @@
 	}).addTo(map);
 
     // Get the JSON object of the query at the following URL.
-    var bees = $.getJSON("http://localhost:5000/bees", function() {
+    coordinates = [];
+    var bees = $.getJSON("http://localhost:5000/nypd", function(doc) {
+        console.log(doc.length);
+        for (var i = 0; i < doc.length; ++i) {
+            coordinates.push([doc[i].Latitude, doc[i].Longitude, "0.1"]);
+        }
+        var heat = L.heatLayer(coordinates).addTo(map);
     });
 
-    console.log(bees); // Print to console.
+    // console.log(coordinates);
 
-    // for (var prop in bees) {
-    //     var obj = bees[prop];
-    //     console.log(obj);
-    // }
 	//addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 
-	var heat = L.heatLayer(addressPoints).addTo(map);
+	// var heat = L.heatLayer(addressPoints).addTo(map);
 
 	</script>
                 </div>
@@ -137,7 +139,7 @@
     </aside>
 
     <!-- jQuery -->
-    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
