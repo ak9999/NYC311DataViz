@@ -82,7 +82,7 @@
 
     // Get the JSON object of the query at the following URL.
     coordinates = [];
-    var bees = $.getJSON("http://localhost:5000/bees", function(doc) {
+    var bees = $.getJSON("http://localhost:5000/query/Noise - Commercial", function(doc) {
         console.log(doc.length);
         for (var i = 0; i < doc.length; ++i) {
             coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
