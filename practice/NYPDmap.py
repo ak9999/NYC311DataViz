@@ -14,11 +14,11 @@ except:
 
 db = client.requests  # Database
 collection = db.sr    # Collection within database
-projection = {'_id': False, 'Latitude': True, 'Longitude': True, 'Agency': True}  # Properties we want.
+projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
 
 # Get the first 'n' coordinates where the responding agency is the NYPD
 n = 50
-coordinates = collection.find({'Agency': 'NYPD'}, projection)[:n]
+coordinates = collection.find({'Agency': 'NYPD'}, projection)
 print('Successfully obtained coordinates.')
 
 hc_coords = (40.768890, -73.964789)
@@ -32,5 +32,6 @@ for each in coordinates:
         folium.CircleMarker([each['Latitude'], each['Longitude']],
                             radius=1).add_to(map_1)
 
+print('Saving map.')
 map_1.save('map1.html')
 print('Saved map.')
