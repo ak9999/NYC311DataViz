@@ -45,10 +45,17 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
 	coordinates = collection.find({column: request_type}, projection) # MongoDB Cursor object, iterable.
 	print('Successfully obtained {} coordinates.'.format(coordinates.count()))
 
+	l = []
+	for each in coordinates:
+		if each['Latitude'] and each['Longitude']:
+			l.append(each)
+
+
 	def jsonify(query_result):
 		return json_util.dumps(query_result)  # Convert query results to json and return
 
-	return Response(jsonify(coordinates), mimetype='application/json')  # Return the result of show_it()
+
+	return Response(jsonify(l), mimetype='application/json')  # Return the result of show_it()
 
 
 @app.route('/nypd', methods=['GET'])
