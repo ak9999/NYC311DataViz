@@ -25,6 +25,11 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/map')
+def map():
+	return render_template('map.html')
+	
+
 @app.route('/query', methods=['GET'])
 @app.route('/query/', methods=['GET'])
 @app.route('/query/<request_type>', methods=['GET'])
