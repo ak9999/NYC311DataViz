@@ -28,7 +28,7 @@ def about():
 @app.route('/map')
 def map():
 	return render_template('map.html')
-	
+
 
 @app.route('/query', methods=['GET'])
 @app.route('/query/', methods=['GET'])
@@ -111,9 +111,14 @@ def beeswasps():
 
     db = client.requests  # Database
     collection = db.sr    # Collection within database
-    projection = {'_id': False, 'Latitude': True, 'Longitude': True, 'Descriptor': True}  # Properties we want.
+    projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
     coordinates = collection.find({'Complaint Type': 'Harboring Bees/Wasps'}, projection) # MongoDB Cursor object, iterable.
     print('Successfully obtained {} coordinates.'.format(coordinates.count()))
+
+    l = []
+    for each in coordinates:
+        if each['Latitude'] and each['Longitude']:
+            l.append(each)
 
     def jsonify(query_result):
         return json_util.dumps(query_result)  # Convert query results to json and return
