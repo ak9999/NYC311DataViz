@@ -44,38 +44,69 @@
                 }]
             });
 
-    coordinates = [];
+    beecoordinates = [];
     var bees = $.getJSON("/bees", function(doc) {
         console.log(doc.length);
         for (var i = 0; i < doc.length; ++i) {
-            coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
+            beecoordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
         }
     });
-    var heat = L.heatLayer(coordinates);
+    var beeheat = L.heatLayer(beecoordinates);
+
+    noisecoordinates = [];
+    var noise = $.getJSON("/query/Noise - Residential", function(doc) {
+        console.log(doc.length);
+        for (var i = 0; i < doc.length; ++i) {
+            noisecoordinates.push([doc[i].Latitude, doc[i].Longitude, "4"]);
+        }
+    });
+    var noiseheat = L.heatLayer(noisecoordinates);
 
     var togglebees = L.easyButton({
         states: [{
                     stateName: 'toggle-bees-on',        // name the state
                     icon:      '<strong>B</strong>',               // and define its properties
-                    title:     'Turn on Bees.',      // like its title
+                    title:     'Toggle bees on.',      // like its title
                     onClick: function(btn, map) {       // and its callback
-                        map.addLayer(heat);
+                        map.addLayer(beeheat);
                         btn.state('toggle-bees-off');                        
                     }
                 },
                 {
                     stateName: 'toggle-bees-off',
                     icon:      '<strong>O</strong>',
-                    title:     'Turn Bees off',
+                    title:     'Toggle bees off.',
                     onClick: function(btn, map) {
-                        map.removeLayer(heat);
+                        map.removeLayer(beeheat);
                         btn.state('toggle-bees-on');
+                    }
+                }]
+            });
+
+    var toggleNoise = L.easyButton({
+        states: [{
+                    stateName: 'toggle-noise-on',        // name the state
+                    icon:      '<strong>N</strong>',               // and define its properties
+                    title:     'Toggle Noise requests on.',      // like its title
+                    onClick: function(btn, map) {       // and its callback
+                        map.addLayer(noiseheat);
+                        btn.state('toggle-noise-off');                        
+                    }
+                },
+                {
+                    stateName: 'toggle-noise-off',
+                    icon:      '<strong>O</strong>',
+                    title:     'Toggle Noise requests off.',
+                    onClick: function(btn, map) {
+                        map.removeLayer(noiseheat);
+                        btn.state('toggle-noise-on');
                     }
                 }]
             });
 
     zoom.addTo(map);
     togglebees.addTo(map);
+    toggleNoise.addTo(map);
 
     // // Get the JSON object of the query at the following URL.
     // coordinates = [];
