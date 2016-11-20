@@ -44,21 +44,23 @@
                 }]
             });
 
-    var toggler = L.easyButton({
+    coordinates = [];
+    var bees = $.getJSON("/bees", function(doc) {
+        console.log(doc.length);
+        for (var i = 0; i < doc.length; ++i) {
+            coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
+        }
+    });
+    var heat = L.heatLayer(coordinates);
+
+    var togglebees = L.easyButton({
         states: [{
                     stateName: 'toggle-bees-on',        // name the state
                     icon:      '<strong>B</strong>',               // and define its properties
                     title:     'Turn on Bees.',      // like its title
                     onClick: function(btn, map) {       // and its callback
-                        // Get the JSON object of the query at the following URL.
-                        coordinates = [];
-                        var bees = $.getJSON("http://localhost:5000/bees", function(doc) {
-                            for (var i = 0; i < doc.length; ++i) {
-                                coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
-                            }
-                            var heat = L.heatLayer(coordinates).addTo(map);
-                        });
-                        btn.state('toggle-bees-off');
+                        map.addLayer(heat);
+                        btn.state('toggle-bees-off');                        
                     }
                 },
                 {
@@ -66,14 +68,14 @@
                     icon:      '<strong>O</strong>',
                     title:     'Turn Bees off',
                     onClick: function(btn, map) {
-                        map._reset();
+                        map.removeLayer(heat);
                         btn.state('toggle-bees-on');
                     }
                 }]
             });
 
     zoom.addTo(map);
-    toggler.addTo(map);
+    togglebees.addTo(map);
 
     // // Get the JSON object of the query at the following URL.
     // coordinates = [];
