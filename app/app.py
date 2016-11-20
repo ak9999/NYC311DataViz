@@ -132,4 +132,4 @@ def beeswasps():
 # Run within virtual environment with python3 app/app.py
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
