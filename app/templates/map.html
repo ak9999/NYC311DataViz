@@ -1,60 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
-    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-easybutton@1.3.0/src/easy-button.css">
-    <script src="https://unpkg.com/leaflet-easybutton@1.3.0/src/easy-button.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.css">
+    <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
     <style>
         body {
             padding: 0;
             margin: 0;
         }
         html, body, #map { width: 100%; height: 100%; }
+        #stateChangingButton { width: 500px; }
     </style>
     <script src="../static/dist/leaflet-heat.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
 </head>
 <body>
-<div id="map"></div>
-<script>
-    var map = L.map('map').setView([40.768890, -73.964789], 12);
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([40.768890, -73.964789], 12);
 
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-    L.EasyButton('fa-star', function(){alert('button works')}).addTo(map);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 
-    // Get the JSON object of the query at the following URL.
-    coordinates = [];
-    var bees = $.getJSON("http://localhost:5000/bees", function(doc) {
-        console.log(doc.length);
-        for (var i = 0; i < doc.length; ++i) {
-            coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
-        }
-        var heat = L.heatLayer(coordinates).addTo(map);
-    });
-
-    var stateChangingButton = L.easyButton({
+    // Sample button.
+    var zoom = L.easyButton({
         states: [{
-                    stateName: 'zoom-to-forest',        // name the state
-                    icon:      'fa-tree',               // and define its properties
-                    title:     'zoom to a forest',      // like its title
+                    stateName: 'zoom-to-hall-of-science',        // name the state
+                    icon:      '<strong>S</strong>',               // and define its properties
+                    title:     'Zoom to the Hall of Science.',      // like its title
                     onClick: function(btn, map) {       // and its callback
-                        map.setView([46.25,-121.8],10);
+                        map.setView([40.747309, -73.851574],20);
                         btn.state('zoom-to-school');    // change state on click!
                     }
                 },
                 {
                     stateName: 'zoom-to-school',
-                    icon:      'fa-university',
+                    icon:      '<strong>H</strong>',
                     title:     'zoom to a school',
                     onClick: function(btn, map) {
-                        map.setView([42.3748204,-71.1161913],16);
-                        btn.state('zoom-to-forest');
+                        map.setView([40.768890, -73.964789],17);
+                        btn.state('zoom-to-hall-of-science');
                     }
                 }]
-    });
+            });
 
-stateChangingButton.addTo( map );
+    var toggler = L.easyButton({
+        states: [{
+                    stateName: 'toggle-bees-on',        // name the state
+                    icon:      '<strong>B</strong>',               // and define its properties
+                    title:     'Turn on Bees.',      // like its title
+                    onClick: function(btn, map) {       // and its callback
+                        // Get the JSON object of the query at the following URL.
+                        coordinates = [];
+                        var bees = $.getJSON("http://localhost:5000/bees", function(doc) {
+                            for (var i = 0; i < doc.length; ++i) {
+                                coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
+                            }
+                            var heat = L.heatLayer(coordinates).addTo(map);
+                        });
+                        btn.state('toggle-bees-off');
+                    }
+                },
+                {
+                    stateName: 'toggle-bees-off',
+                    icon:      '<strong>O</strong>',
+                    title:     'Turn Bees off',
+                    onClick: function(btn, map) {
+                        map._reset();
+                        btn.state('toggle-bees-on');
+                    }
+                }]
+            });
+
+    zoom.addTo(map);
+    toggler.addTo(map);
+
+    // // Get the JSON object of the query at the following URL.
+    // coordinates = [];
+    // var bees = $.getJSON("http://localhost:5000/bees", function(doc) {
+    //     console.log(doc.length);
+    //     for (var i = 0; i < doc.length; ++i) {
+    //         coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
+    //     }
+    //     var heat = L.heatLayer(coordinates).addTo(map);
+    // });
 
 </script>
 </body>
