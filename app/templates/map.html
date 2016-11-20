@@ -66,7 +66,7 @@
     var togglebees = L.easyButton({
         states: [{
                     stateName: 'toggle-bees-on',        // name the state
-                    icon:      '<strong>B</strong>',               // and define its properties
+                    icon:      '<strong>Bees</strong>',               // and define its properties
                     title:     'Toggle bees on.',      // like its title
                     onClick: function(btn, map) {       // and its callback
                         map.addLayer(beeheat);
@@ -75,7 +75,7 @@
                 },
                 {
                     stateName: 'toggle-bees-off',
-                    icon:      '<strong>O</strong>',
+                    icon:      '<p>Bees</p>',
                     title:     'Toggle bees off.',
                     onClick: function(btn, map) {
                         map.removeLayer(beeheat);
@@ -83,6 +83,7 @@
                     }
                 }]
             });
+    togglebees.button.style.width = '50px'
 
     var toggleNoise = L.easyButton({
         states: [{
