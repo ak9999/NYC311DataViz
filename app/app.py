@@ -30,9 +30,8 @@ def map():
 	return render_template('map.html')
 
 
-@app.route('/query', methods=['GET'])
-@app.route('/query/', methods=['GET'])
 @app.route('/query/<request_type>', methods=['GET'])
+@app.route('/search/<request_type>', methods=['GET'])
 def query(column='Complaint Type', request_type='Special Enforcement'):
     '''Returns Latitude and Longitude of issues.'''
     # Connect to database
