@@ -42,6 +42,14 @@
             });
         }
 
+        var clearmap = L.easyButton('<strong>Clear Map</strong>', function(btn, map){
+                map.remove();
+                var map = L.map('map').setView([40.768890, -73.964789], 16);
+                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+            }
+        );
+        clearmap.button.style.width = '50px'
+
         // Sample button.
         var zoom = L.easyButton({
             states: [{
@@ -62,7 +70,7 @@
                             btn.state('zoom-in');
                         }
                     }]
-                });
+        });
 
         beecoordinates = [];
         var bees = $.getJSON("/bees", function(doc) {
@@ -160,6 +168,7 @@
 
 
         zoom.addTo(map);
+        clearmap.addTo(map);
         togglebees.addTo(map);
         toggleNoise.addTo(map);
         togglewatersys.addTo(map);
