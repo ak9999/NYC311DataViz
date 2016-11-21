@@ -43,34 +43,13 @@
         }
 
         var clearmap = L.easyButton('<strong>Clear Map</strong>', function(btn, map){
-                map.remove();
-                var map = L.map('map').setView([40.768890, -73.964789], 16);
+                map.eachLayer(function (layer) {
+                    map.removeLayer(layer);
+                });
                 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
             }
         );
         clearmap.button.style.width = '75px'
-
-        // Sample button.
-        var zoom = L.easyButton({
-            states: [{
-                        stateName: 'zoom-in',        // name the state
-                        icon:      '<strong>Z+</strong>',               // and define its properties
-                        title:     'Zoom in on Hunter College.',      // like its title
-                        onClick: function(btn, map) {       // and its callback
-                            map.setView([40.768890, -73.964789],20);
-                            btn.state('zoom-out');    // change state on click!
-                        }
-                    },
-                    {
-                        stateName: 'zoom-out',
-                        icon:      '<strong>Z-</strong>',
-                        title:     'Zoom out on Hunter College',
-                        onClick: function(btn, map) {
-                            map.setView([40.768890, -73.964789],12);
-                            btn.state('zoom-in');
-                        }
-                    }]
-        });
 
         beecoordinates = [];
         var bees = $.getJSON("/bees", function(doc) {
@@ -166,13 +145,11 @@
         toggleNoise.button.style.width = '80px'
 
 
-
-        zoom.addTo(map);
         clearmap.addTo(map);
         togglebees.addTo(map);
         toggleNoise.addTo(map);
         togglewatersys.addTo(map);
-        map.addControl( new L.Control.Search({sourceData: searchByAjax, text: 'Color...', markerLocation: false}));
+        map.addControl( new L.Control.Search({sourceData: searchByAjax, markerLocation: false}));
 
         // // Get the JSON object of the query at the following URL.
         // coordinates = [];
