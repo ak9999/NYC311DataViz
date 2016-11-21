@@ -5,10 +5,9 @@
 * Python 3
 	* Knowledge of how to set up a virtual environment
 	Tutorial here: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
-* Numpy
-* Pandas
 * PyMongo
 * Flask
+* The data, which can be found [here](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data)
 
 ## Setup
 
