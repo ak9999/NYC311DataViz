@@ -28,6 +28,10 @@
 
         function searchByAjax(text, callResponse) // callback for 3rd party ajax reqs
         {
+            map.eachLayer(function (layer) {
+                map.removeLayer(layer);
+            });
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
             return $.ajax({
                 url: 'search/'+text,
                 type: 'GET',
