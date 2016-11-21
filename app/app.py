@@ -47,7 +47,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
     db = client.requests  # Database
     collection = db.sr    # Collection within database
     projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
-    coordinates = collection.find({column: request_type}, projection) # MongoDB Cursor object, iterable.
+    coordinates = collection.find({'$text': {'$search': request_type}}, projection) # MongoDB Cursor object, iterable.
     print('Successfully obtained {} coordinates.'.format(coordinates.count()))
 
     l = []
