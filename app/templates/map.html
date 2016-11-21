@@ -46,20 +46,20 @@
             });
         }
 
-        var clearmap = L.easyButton('<strong>Clear Map</strong>', function(btn, map){
+        var clearmap = L.easyButton('<strong>Reset</strong>', function(btn, map){
                 map.eachLayer(function (layer) {
                     map.removeLayer(layer);
                 });
                 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
             }
         );
-        clearmap.button.style.width = '75px'
+        clearmap.button.style.width = '50px'
 
         var togglewater = L.easyButton({
             states: [{
-                        stateName: 'toggle-watersys-on',        // name the state
-                        icon:      '<strong>Water Issues On</strong>',               // and define its properties
-                        title:     'Toggle water system on.',      // like its title
+                        stateName: 'toggle-watersys-on',
+                        icon:      '<strong style="color:#008000">Water Issues On</strong>',
+                        title:     'Toggle water system on.',
                         onClick: function(btn, map) {
                             searchByAjax('water');
                             btn.state('toggle-watersys-off');
@@ -67,7 +67,7 @@
                     },
                     {
                         stateName: 'toggle-watersys-off',
-                        icon:      '<strong>Water Issues Off</strong>',
+                        icon:      '<strong style="color:#800000">Water Issues Off</strong>',
                         title:     'Toggle water system off.',
                         onClick: function(btn, map) {
                             map.eachLayer(function (layer) {
@@ -83,7 +83,7 @@
         var togglebees = L.easyButton({
             states: [{
                         stateName: 'toggle-bees-on',        // name the state
-                        icon:      '<strong>Bees On</strong>',               // and define its properties
+                        icon:      '<strong style="color:#008000">Bees On</strong>',               // and define its properties
                         title:     'Toggle bees on.',      // like its title
                         onClick: function(btn, map) {       // and its callback
                             searchByAjax('bees');
@@ -92,7 +92,7 @@
                     },
                     {
                         stateName: 'toggle-bees-off',
-                        icon:      '<strong>Bees Off</strong>',
+                        icon:      '<strong style="color:#800000">Bees Off</strong>',
                         title:     'Toggle bees off.',
                         onClick: function(btn, map) {
                             map.eachLayer(function (layer) {
@@ -107,17 +107,17 @@
 
         var toggleNoise = L.easyButton({
             states: [{
-                        stateName: 'toggle-noise-on',        // name the state
-                        icon:      '<strong>Noise On</strong>',               // and define its properties
-                        title:     'Toggle Noise requests on.',      // like its title
-                        onClick: function(btn, map) {       // and its callback
+                        stateName: 'toggle-noise-on',
+                        icon:      '<strong style="color:#008000">Noise On</strong>',
+                        title:     'Toggle Noise requests on.',
+                        onClick: function(btn, map) {
                             searchByAjax('noise');
                             btn.state('toggle-noise-off');                        
                         }
                     },
                     {
                         stateName: 'toggle-noise-off',
-                        icon:      '<strong>Noise Off</strong>',
+                        icon:      '<strong style="color:#800000">Noise Off</strong>',
                         title:     'Toggle Noise requests off.',
                         onClick: function(btn, map) {
                             map.eachLayer(function (layer) {
