@@ -19,7 +19,7 @@
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([40.768890, -73.964789], 12);
+        var map = L.map('map').setView([40.768890, -73.964789], 16);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -55,13 +55,44 @@
     var beeheat = L.heatLayer(beecoordinates);
 
     noisecoordinates = [];
-    var noise = $.getJSON("/query/Noise - Residential", function(doc) {
+    var noise = $.getJSON("/query/noise", function(doc) {
         console.log(doc.length);
         for (var i = 0; i < doc.length; ++i) {
             noisecoordinates.push([doc[i].Latitude, doc[i].Longitude, "4"]);
         }
     });
     var noiseheat = L.heatLayer(noisecoordinates);
+
+    watersyscoords = [];
+    var noise = $.getJSON("/query/water", function(doc) {
+        console.log(doc.length);
+        for (var i = 0; i < doc.length; ++i) {
+            watersyscoords.push([doc[i].Latitude, doc[i].Longitude, "4"]);
+        }
+    });
+    var watersysheat = L.heatLayer(watersyscoords);
+
+    var togglewatersys = L.easyButton({
+        states: [{
+                    stateName: 'toggle-watersys-on',        // name the state
+                    icon:      '<strong>Water Issues On</strong>',               // and define its properties
+                    title:     'Toggle water system on.',      // like its title
+                    onClick: function(btn, map) {       // and its callback
+                        map.addLayer(watersysheat);
+                        btn.state('toggle-watersys-off');                        
+                    }
+                },
+                {
+                    stateName: 'toggle-watersys-off',
+                    icon:      '<strong>Water Issues Off</strong>',
+                    title:     'Toggle water system off.',
+                    onClick: function(btn, map) {
+                        map.removeLayer(watersysheat);
+                        btn.state('toggle-watersys-on');
+                    }
+                }]
+            });
+    togglewatersys.button.style.width = '120px'
 
     var togglebees = L.easyButton({
         states: [{
@@ -88,7 +119,7 @@
     var toggleNoise = L.easyButton({
         states: [{
                     stateName: 'toggle-noise-on',        // name the state
-                    icon:      '<strong>Residential Noise On</strong>',               // and define its properties
+                    icon:      '<strong>Noise On</strong>',               // and define its properties
                     title:     'Toggle Noise requests on.',      // like its title
                     onClick: function(btn, map) {       // and its callback
                         map.addLayer(noiseheat);
@@ -97,7 +128,7 @@
                 },
                 {
                     stateName: 'toggle-noise-off',
-                    icon:      '<strong>Residential Noise Off</strong>',
+                    icon:      '<strong>Noise Off</strong>',
                     title:     'Toggle Noise requests off.',
                     onClick: function(btn, map) {
                         map.removeLayer(noiseheat);
@@ -105,11 +136,14 @@
                     }
                 }]
             });
-    toggleNoise.button.style.width = '160px'
+    toggleNoise.button.style.width = '80px'
+
+
 
     zoom.addTo(map);
     togglebees.addTo(map);
     toggleNoise.addTo(map);
+    togglewatersys.addTo(map);
 
     // // Get the JSON object of the query at the following URL.
     // coordinates = [];
