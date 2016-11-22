@@ -10,6 +10,7 @@ flask-nav==0.5
 Flask-WTF==0.13.1
 folium==0.2.1
 googlemaps==2.4.4
+gunicorn==19.6.0
 ipykernel==4.5.0
 ipython==5.1.0
 ipython-genutils==0.1.0
