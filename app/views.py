@@ -33,14 +33,15 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
     '''Returns Latitude and Longitude of issues.'''
     # Connect to database
     try:
-        client = MongoClient('mongodb://localhost:27017/')
+        client = MongoClient('mongodb://heroku_tltpgrj8:e1rtbfnett3uv0k2k96k61o08v@ds049558.mlab.com:49558/heroku_tltpgrj8
+        ')
         print('Connection successful.')
     except:
         print('Could not connect to MongoDB')
         return
 
 
-    db = client.requests  # Database
+    db = heroku_tltpgrj8  # Database
     collection = db.sr    # Collection within database
     projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
     coordinates = collection.find({'$text': {'$search': request_type}}, projection) # MongoDB Cursor object, iterable.
@@ -67,13 +68,14 @@ def GetNYPDResponses():
 
     # Connect to database
     try:
-        client = MongoClient('mongodb://localhost:27017/')
+        client = MongoClient('mongodb://heroku_tltpgrj8:e1rtbfnett3uv0k2k96k61o08v@ds049558.mlab.com:49558/heroku_tltpgrj8
+        ')
         print('Connection successful.')
     except:
         print('Could not connect to MongoDB')
         exit()
 
-    db = client.requests  # Database
+    db = client.heroku_tltpgrj8  # Database
     collection = db.sr    # Collection within database
     projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
     coordinates = collection.find({'Agency': 'NYPD'}, projection) # MongoDB Cursor object, iterable.
@@ -99,13 +101,13 @@ def beeswasps():
 
     # Connect to database
     try:
-        client = MongoClient('mongodb://localhost:27017/')
+        client = MongoClient('mongodb://heroku_tltpgrj8:e1rtbfnett3uv0k2k96k61o08v@ds049558.mlab.com:49558/heroku_tltpgrj8')
         print('Connection successful.')
     except:
         print('Could not connect to MongoDB')
         exit()
 
-    db = client.requests  # Database
+    db = client.heroku_tltpgrj8  # Database
     collection = db.sr    # Collection within database
     projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
     coordinates = collection.find({'Complaint Type': 'Harboring Bees/Wasps'}, projection) # MongoDB Cursor object, iterable.
