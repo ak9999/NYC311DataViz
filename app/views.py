@@ -40,7 +40,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
         return
 
 
-    db = heroku_tltpgrj8  # Database
+    db = client.heroku_tltpgrj8  # Database
     collection = db.sr    # Collection within database
     projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
     coordinates = collection.find({'$text': {'$search': request_type}}, projection) # MongoDB Cursor object, iterable.
