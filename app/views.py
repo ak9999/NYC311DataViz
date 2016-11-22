@@ -1,11 +1,8 @@
-from flask import Flask
+from app import app
 from flask import render_template
 from flask import Response
 from bson import json_util
 from pymongo import MongoClient
-
-app = Flask(__name__)
-
 
 @app.route('/')
 @app.route('/index.html')
@@ -126,9 +123,3 @@ def beeswasps():
     response = Response(response=jsonify(l), status=200, mimetype='application/json')
     response.headers.add('Access-Control-Allow-Origin', '*')  # Change * to domain.
     return response
-
-
-# Run within virtual environment with python3 app/app.py
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
