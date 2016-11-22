@@ -33,8 +33,7 @@ def query(column='Complaint Type', request_type='Special Enforcement'):
     '''Returns Latitude and Longitude of issues.'''
     # Connect to database
     try:
-        client = MongoClient('mongodb://heroku_tltpgrj8:e1rtbfnett3uv0k2k96k61o08v@ds049558.mlab.com:49558/heroku_tltpgrj8
-        ')
+        client = MongoClient('mongodb://heroku_tltpgrj8:e1rtbfnett3uv0k2k96k61o08v@ds049558.mlab.com:49558/heroku_tltpgrj8')
         print('Connection successful.')
     except:
         print('Could not connect to MongoDB')
@@ -68,8 +67,7 @@ def GetNYPDResponses():
 
     # Connect to database
     try:
-        client = MongoClient('mongodb://heroku_tltpgrj8:e1rtbfnett3uv0k2k96k61o08v@ds049558.mlab.com:49558/heroku_tltpgrj8
-        ')
+        client = MongoClient('mongodb://heroku_tltpgrj8:e1rtbfnett3uv0k2k96k61o08v@ds049558.mlab.com:49558/heroku_tltpgrj8')
         print('Connection successful.')
     except:
         print('Could not connect to MongoDB')
