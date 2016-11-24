@@ -40,7 +40,7 @@
                 success: function(json) {
                     var searchquery = [];
                     for (var i = 0; i < json.length; ++i) {
-                        searchquery.push([json[i].Latitude, json[i].Longitude, 5]);
+                        searchquery.push([json[i].Latitude, json[i].Longitude, 10]);
                     }
                     map.addLayer(L.heatLayer(searchquery));
                 }
