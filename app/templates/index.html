@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 	<style>
         #map { width: 800px; height: 600px; }
@@ -62,41 +63,32 @@
     </header>
 
 
-    <aside class="bg-primary">
+       <aside class="bg-primary">
         <div class="container text-center">
             <div class="call-to-action">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-	<div id="map"></div>
-
-<script src="../static/dist/leaflet-heat.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-
-<script src="/static/js/test.js"></script>
-    <!-- Create map and set view to center on Hunter College. -->
-	<script>
-
-	var map = L.map('map').setView([40.768890, -73.964789], 12);
-
-	var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-	}).addTo(map);
-
-    // Get the JSON object of the query at the following URL.
-    coordinates = [];
-    var bees = $.getJSON("http://localhost:5000/query/Noise - Commercial", function(doc) {
-        console.log(doc.length);
-        for (var i = 0; i < doc.length; ++i) {
-            coordinates.push([doc[i].Latitude, doc[i].Longitude, "10"]);
-        }
-        var heat = L.heatLayer(coordinates).addTo(map);
-    });
-
-    // console.log(coordinates);
-
-	//addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-
-	// var heat = L.heatLayer(addressPoints).addTo(map);
-
-	</script>
+				<canvas id="myChart"></canvas>
+				<script>
+					var ctx = document.getElementById("myChart").getContext('2d');
+					var myChart = new Chart(ctx, {
+					type: 'pie',
+					data: {
+					labels: ["M", "T", "W", "T", "F", "S", "S"],
+					datasets: [{
+					backgroundColor: [
+						"#2ecc71",
+						"#3498db",
+						"#95a5a6",
+						"#9b59b6",
+						"#f1c40f",
+						"#e74c3c",
+						"#34495e"
+					],
+						data: [12, 19, 3, 17, 28, 24, 7]
+					}]
+					}
+				});
+			</script>
                 </div>
             </div>
         </div>
