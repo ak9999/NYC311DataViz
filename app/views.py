@@ -123,3 +123,27 @@ def beeswasps():
     response = Response(response=jsonify(l), status=200, mimetype='application/json')
     response.headers.add('Access-Control-Allow-Origin', '*')  # Change * to domain.
     return response
+
+@app.route('/top10complaints', methods=['GET'])
+def top10complaints():
+    '''Returns JSON dictionary of complaint types sorted by number of complaints.'''
+
+    # Connect to database
+    try:
+        client = MongoClient('mongodb://localhost:27017/')
+        print('Connection successful.')
+    except:
+        print('Could not connect to MongoDB')
+        exit()
+
+    db = client.requests  # Database
+    collection = db.sr    # Collection within database
+    ranking = collection.aggregate([{ "$group" : {"_id": "$Complaint Type" , "num_complaint" : {"$sum": 1 }}}, {"$sort" : {"num_complaint" : -1}} ])
+    
+    def jsonify(ranking):
+        return json_util.dumps(ranking)  # Convert query results to json and return
+
+
+    response = Response(response=jsonify(ranking), status=200, mimetype='application/json')
+    response.headers.add('Access-Control-Allow-Origin', '*')  # Change * to domain.
+    return response
