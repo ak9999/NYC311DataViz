@@ -15,4 +15,5 @@
 
 * Clone the repo: `git clone https://github.com/ak9999/NYC311DataViz`
 * Create a virtual environment with `python3 -m venv env`
+* Run `pip install -r requirements.txt` within the virtual environment.
 * Run `runserver.py`
