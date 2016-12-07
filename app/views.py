@@ -22,6 +22,11 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/graph')
+def graph():
+    """Returns the about page, which for now is just index.html"""
+    return render_template('graph.html')
+
 @app.route('/map')
 def map():
 	return render_template('map.html')
