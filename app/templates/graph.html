@@ -8,8 +8,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>311 Index</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+	
+    <title>Graphs</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,13 +42,57 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">NYC 311 Service Requests</h1>
-            <p class="lead">Made with Python using Bootstrap, Flask, MongoDB, and leaflet.js</p>
-            <p class="lead">
-              <a href="map" class="btn btn-lg btn-default">Heatmap</a>
-            </p>
+            <h1 class="cover-heading">Interesting graphs</h1>
+            <canvas id="chart1"></canvas>
+				<script>
+					var ctx = document.getElementById("chart1").getContext('2d');
+					var chart1 = new Chart(ctx, {
+					type: 'pie',
+					data: {
+					labels: ["M", "T", "W", "T", "F", "S", "S"],
+					datasets: [{
+					backgroundColor: [
+						"#2ecc71",
+						"#3498db",
+						"#95a5a6",
+						"#9b59b6",
+						"#f1c40f",
+						"#e74c3c",
+						"#34495e"
+					],
+						data: [12, 19, 3, 17, 28, 24, 7]
+					}]
+					}
+				});
+			</script>
           </div>
 
+		   <div class="inner cover">
+            <h1 class="cover-heading">Top 10 Complaints</h1>
+            <canvas id="chart2"></canvas>
+				<script>
+					var ctx = document.getElementById("chart2").getContext('2d');
+					var chart2 = new Chart(ctx, {
+					type: 'doughnut',
+					data: {
+					labels: ["M", "T", "W", "T", "F", "S", "S"],
+					datasets: [{
+					backgroundColor: [
+						"#2ecc71",
+						"#3498db",
+						"#95a5a6",
+						"#9b59b6",
+						"#f1c40f",
+						"#e74c3c",
+						"#34495e"
+					],
+						data: [12, 19, 3, 17, 28, 24, 7]
+					}]
+					}
+				});
+			</script>
+          </div>
+		  
           <div class="mastfoot">
             <div class="inner">
               <p>Update names or stuff here</p>
