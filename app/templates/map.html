@@ -59,7 +59,7 @@
         var togglewater = L.easyButton({
             states: [{
                         stateName: 'toggle-watersys-on',
-                        icon:      '<strong style="color:#008000">Water Issues On</strong>',
+                        icon:      '<strong style="color:#008000">Water Issues</strong>',
                         title:     'Toggle water system on.',
                         onClick: function(btn, map) {
                             searchByAjax('water');
@@ -68,7 +68,7 @@
                     },
                     {
                         stateName: 'toggle-watersys-off',
-                        icon:      '<strong style="color:#800000">Water Issues Off</strong>',
+                        icon:      '<strong style="color:#800000">Water Issues</strong>',
                         title:     'Toggle water system off.',
                         onClick: function(btn, map) {
                             map.eachLayer(function (layer) {
@@ -109,7 +109,7 @@
         var toggleNoise = L.easyButton({
             states: [{
                         stateName: 'toggle-noise-on',
-                        icon:      '<strong style="color:#008000">Noise On</strong>',
+                        icon:      '<strong style="color:#008000">Noise</strong>',
                         title:     'Toggle Noise requests on.',
                         onClick: function(btn, map) {
                             searchByAjax('noise');
@@ -118,7 +118,7 @@
                     },
                     {
                         stateName: 'toggle-noise-off',
-                        icon:      '<strong style="color:#800000">Noise Off</strong>',
+                        icon:      '<strong style="color:#800000">Noise</strong>',
                         title:     'Toggle Noise requests off.',
                         onClick: function(btn, map) {
                             map.eachLayer(function (layer) {
