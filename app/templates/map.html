@@ -84,7 +84,7 @@
         var togglebees = L.easyButton({
             states: [{
                         stateName: 'toggle-bees-on',        // name the state
-                        icon:      '<strong style="color:#008000">Bees On</strong>',               // and define its properties
+                        icon:      '<strong style="color:#008000">Bees</strong>',               // and define its properties
                         title:     'Toggle bees on.',      // like its title
                         onClick: function(btn, map) {       // and its callback
                             searchByAjax('bees');
@@ -93,7 +93,7 @@
                     },
                     {
                         stateName: 'toggle-bees-off',
-                        icon:      '<strong style="color:#800000">Bees Off</strong>',
+                        icon:      '<strong style="color:#800000">Bees</strong>',
                         title:     'Toggle bees off.',
                         onClick: function(btn, map) {
                             map.eachLayer(function (layer) {
