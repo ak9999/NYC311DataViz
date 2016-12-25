@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/NYC311DataViz
+ExecStart=/home/ubuntu/NYC311DataViz/env/bin/gunicorn --limit-request-line 0 --workers 1 --bind unix:/home/ubuntu/NYC311DataViz/NYC311DataViz.sock -m 007 app:app
+
+[Install]
+WantedBy=multi-user.target
