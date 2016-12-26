@@ -166,7 +166,7 @@ def zip(zip_loc="Zip Num"):
         print('Could not connect to MongoDB')
         exit()
 
-    db = client.NYC311  # Database
+    db = client.requests  # Database
     collection = db.sr    # Collection within database
     projection = {'_id': False, 'Latitude': True, 'Longitude': True}  # Properties we want.
     coordinates = collection.find({'Incident Zip': zip_l}, projection) # MongoDB Cursor object, iterable.
