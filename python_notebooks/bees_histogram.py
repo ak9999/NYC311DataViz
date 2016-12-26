@@ -13,6 +13,7 @@ print(sorted(months))
 
 # Define the plot
 plot = Histogram(months, xlabel='Months', ylabel='Frequency', title='Bee/Wasp Complaints by Month in 2016')
-handle = show(plot)  # Show the figure.
 
-output_file('bees_histogram.html')
+# handle = show(plot)  # Show the figure.
+
+output_file('bees_histogram2.html')

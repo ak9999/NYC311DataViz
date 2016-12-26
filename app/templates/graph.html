@@ -1,113 +1,172 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-	
-    <title>Graphs</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
-    <!-- Bootstrap core CSS -->
-    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- These next two lines are necessary for the Bokeh graph. -->
+  <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.2.min.css" type="text/css" />
+  <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.2.min.js"></script>
+  
+  <title>Graphs</title>
 
-    <!-- Custom styles for this template -->
-    <link href="static/css/cover.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  </head>
+  <!-- Custom styles for this template -->
+  <link href="static/css/cover.css" rel="stylesheet">
 
-  <body>
+</head>
 
-    <div class="site-wrapper">
+<body>
 
-      <div class="site-wrapper-inner">
+  <div class="site-wrapper">
 
-        <div class="cover-container">
+    <div class="site-wrapper-inner">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">311 Visualization</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="/">Home</a></li>
-                  <li><a href="graph">Features</a></li>
-                  <li><a href="about">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
+      <div class="cover-container">
+
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand">311 Visualization</h3>
+            <nav>
+              <ul class="nav masthead-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="graph">Features</a></li>
+                <li><a href="about">Contact</a></li>
+              </ul>
+            </nav>
           </div>
+        </div>
 
           <!-- <div class="inner cover">
             <h1 class="cover-heading">Interesting graphs</h1>
             <canvas id="chart1"></canvas>
-				<script>
-					var ctx = document.getElementById("chart1").getContext('2d');
-					var chart1 = new Chart(ctx, {
-					type: 'pie',
-					data: {
-					labels: ["M", "T", "W", "T", "F", "S", "S"],
-					datasets: [{
-					backgroundColor: [
-						"#2ecc71",
-						"#3498db",
-						"#95a5a6",
-						"#9b59b6",
-						"#f1c40f",
-						"#e74c3c",
-						"#34495e"
-					],
-						data: [12, 19, 3, 17, 28, 24, 7]
-					}]
-					}
-				});
-			</script>
-          </div> -->
+        <script>
+          var ctx = document.getElementById("chart1").getContext('2d');
+          var chart1 = new Chart(ctx, {
+          type: 'pie',
+          data: {
+          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          datasets: [{
+          backgroundColor: [
+            "#2ecc71",
+            "#3498db",
+            "#95a5a6",
+            "#9b59b6",
+            "#f1c40f",
+            "#e74c3c",
+            "#34495e"
+          ],
+            data: [12, 19, 3, 17, 28, 24, 7]
+          }]
+          }
+        });
+      </script>
+    </div> -->
 
-		   <div class="inner cover">
-            <h1 class="cover-heading">Top 10 Complaints</h1>
-            <canvas id="chart2"></canvas>
-				<script>
-					var ctx = document.getElementById("chart2").getContext('2d');
-					var chart2 = new Chart(ctx, {
-					type: 'doughnut',
-					data: {
-					labels: ["Noise - Residential", "HEAT/HOT WATER", "Illegal Parking", "Blocked Driveway", "Street Condition", "Street Light Condition", "Water System", "UNSANITARY CONDITION", "Noise - Street/Sidewalk", "PAINT/PLASTER"],
-					datasets: [{
-					backgroundColor: [
-						"#2ecc71",
-						"#3498db",
-						"#95a5a6",
-						"#9b59b6",
-						"#f1c40f",
-						"#e74c3c",
-						"#34495e",
-						"#FF0000",
-						"#800000",
-						"#FFA07A"
-						
-					],
-						data: [158448, 133562, 84950, 80338, 70770, 64993, 57551, 57199, 47773, 42655]
-					}]
-					}
-				});
-			</script>
-          </div>
-		  
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Update names or stuff here</p>
-            </div>
-          </div>
+    <div class="inner cover">
+      <h1 class="cover-heading">Top 10 Complaints</h1>
+      <canvas id="chart2"></canvas>
+      <script>
+        var ctx = document.getElementById("chart2").getContext('2d');
+        var chart2 = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ["Noise - Residential", "HEAT/HOT WATER", "Illegal Parking", "Blocked Driveway", "Street Condition", "Street Light Condition", "Water System", "UNSANITARY CONDITION", "Noise - Street/Sidewalk", "PAINT/PLASTER"],
+            datasets: [{
+              backgroundColor: [
+              "#2ecc71",
+              "#3498db",
+              "#95a5a6",
+              "#9b59b6",
+              "#f1c40f",
+              "#e74c3c",
+              "#34495e",
+              "#FF0000",
+              "#800000",
+              "#FFA07A"
 
-        </div>
+              ],
+              data: [158448, 133562, 84950, 80338, 70770, 64993, 57551, 57199, 47773, 42655]
+            }]
+          }
+        });
+      </script>
+    </div>
 
+    <div class = "inner cover">
+      <script type="text/javascript">
+        Bokeh.set_log_level("info");
+      </script>
+      <style>
+        html {
+          width: 100%;
+          height: 100%;
+        }
+        body {
+          width: 90%;
+          height: 100%;
+          margin: auto;
+        }
+      </style>
+    </head>
+    <body>
+
+      <div class="bk-root">
+        <div class="plotdiv" id="e935f2e7-d988-4c8d-ad20-6769addc3e51"></div>
       </div>
 
-    </div>
+      <script type="text/javascript">
+        Bokeh.set_log_level("info");
+      </script>
+      <style>
+        html {
+          width: 100%;
+          height: 100%;
+        }
+        body {
+          width: 90%;
+          height: 100%;
+          margin: auto;
+        }
+      </style>
+    </head>
+    <body>
+
+<div class="bk-root">
+            <div class="plotdiv" id="b50cb81c-5f22-4598-9063-4afe2bf93a8e"></div>
+        </div>
+        
+        <script type="text/javascript">
+            Bokeh.$(function() {
+            Bokeh.safely(function() {
+                var docs_json = {"9686fa8e-7caa-4614-963b-daf5b6ac29d9":{"roots":{"references":[{"attributes":{"data_source":{"id":"38f5e282-d988-4e5d-8c55-f84c5349003e","type":"ColumnDataSource"},"glyph":{"id":"6a096aef-b96e-4e5d-acae-928e046d2d8b","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"2b13c148-d9ef-4fbe-a819-265029b85add","type":"GlyphRenderer"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(11.0, 12.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[4.0],"label":["(11.0, 12.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["11.5"],"y":[2.0]}},"id":"38f5e282-d988-4e5d-8c55-f84c5349003e","type":"ColumnDataSource"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(5.0, 6.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[23.0],"label":["(5.0, 6.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["5.5"],"y":[11.5]}},"id":"05d32b72-2d0f-4130-8437-5ad19493489d","type":"ColumnDataSource"},{"attributes":{"data_source":{"id":"05d32b72-2d0f-4130-8437-5ad19493489d","type":"ColumnDataSource"},"glyph":{"id":"5ff79dfc-ede7-4f33-bde2-0c110b940cf2","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"ec54ee56-c52e-44a4-8b61-345ee9991b89","type":"GlyphRenderer"},{"attributes":{"below":[{"id":"19dedd03-ecbd-4c10-835b-42b4d0047b49","type":"LinearAxis"}],"left":[{"id":"c61e4ac5-228d-478a-b0ba-d48bc02faede","type":"LinearAxis"}],"renderers":[{"id":"36957582-f02e-4288-9f1f-5345b2e72ce3","type":"BoxAnnotation"},{"id":"ad273627-a306-460c-a992-127b30d89e56","type":"GlyphRenderer"},{"id":"85256c59-3d12-4dc8-baf0-cfebdbca625b","type":"GlyphRenderer"},{"id":"ec54ee56-c52e-44a4-8b61-345ee9991b89","type":"GlyphRenderer"},{"id":"853bbd00-6893-415a-b2fe-e32bef04c176","type":"GlyphRenderer"},{"id":"30e31656-c02e-4c18-9c18-9237ee2ffc3b","type":"GlyphRenderer"},{"id":"b5e9f648-9387-46cd-bf22-7076f4bbbc01","type":"GlyphRenderer"},{"id":"b16fff14-4bf8-4762-ac83-30ccb0022841","type":"GlyphRenderer"},{"id":"51ca274d-79fe-4de2-a783-c2a0db6c6c99","type":"GlyphRenderer"},{"id":"2b13c148-d9ef-4fbe-a819-265029b85add","type":"GlyphRenderer"},{"id":"eab00344-9c05-4284-8e0f-c790f70a9a55","type":"Legend"},{"id":"19dedd03-ecbd-4c10-835b-42b4d0047b49","type":"LinearAxis"},{"id":"c61e4ac5-228d-478a-b0ba-d48bc02faede","type":"LinearAxis"},{"id":"68bc8ea5-5875-4834-b7dd-2dd79a753267","type":"Grid"}],"title":{"id":"6b7ff7b2-7aba-47aa-b6e8-90e40a00682e","type":"Title"},"tool_events":{"id":"41ea640d-1da0-4ca2-8f96-7c111a091332","type":"ToolEvents"},"toolbar":{"id":"fa59ddb2-308b-4d4b-9e99-f9783643a175","type":"Toolbar"},"x_mapper_type":"auto","x_range":{"id":"cd84be21-f83b-4c40-8e58-fe3d690f2868","type":"Range1d"},"y_mapper_type":"auto","y_range":{"id":"588e7350-6de8-4d18-9aa9-4e66e77771bc","type":"Range1d"}},"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"},{"attributes":{"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"}},"id":"948947de-7c58-461d-bf3a-ec2e61ea63db","type":"SaveTool"},{"attributes":{"callback":null,"end":46.2},"id":"588e7350-6de8-4d18-9aa9-4e66e77771bc","type":"Range1d"},{"attributes":{"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"}},"id":"d8252260-3140-4776-91bc-42b0e64ad648","type":"WheelZoomTool"},{"attributes":{"axis_label":"Months","formatter":{"id":"7d94d38e-2fa4-4ae8-81eb-6f5bde8e9389","type":"BasicTickFormatter"},"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"},"ticker":{"id":"f5aae2cb-9c83-4505-bc50-615dddf2f3d1","type":"BasicTicker"}},"id":"19dedd03-ecbd-4c10-835b-42b4d0047b49","type":"LinearAxis"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"d63bd37b-9cf7-4f7e-aa6b-6fb703dd6d0e","type":"Rect"},{"attributes":{"data_source":{"id":"a9f3f694-5609-45d1-a09f-6ec5d84eb1ed","type":"ColumnDataSource"},"glyph":{"id":"04e9855e-459c-48f6-9d6c-049304fee02a","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"b16fff14-4bf8-4762-ac83-30ccb0022841","type":"GlyphRenderer"},{"attributes":{},"id":"41ea640d-1da0-4ca2-8f96-7c111a091332","type":"ToolEvents"},{"attributes":{},"id":"6a3e72af-61d4-4024-8c13-1c849218b0e2","type":"BasicTickFormatter"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"e5db40a1-3deb-4443-a837-8a3069d3f097","type":"Rect"},{"attributes":{"axis_label":"Frequency","formatter":{"id":"6a3e72af-61d4-4024-8c13-1c849218b0e2","type":"BasicTickFormatter"},"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"},"ticker":{"id":"c74c807b-1217-4138-b5a1-ccb6d17b8623","type":"BasicTicker"}},"id":"c61e4ac5-228d-478a-b0ba-d48bc02faede","type":"LinearAxis"},{"attributes":{"data_source":{"id":"db17d211-36a6-4fb1-9410-1d2ba074739e","type":"ColumnDataSource"},"glyph":{"id":"d0015d61-3eda-4edb-83da-50ac9c083a64","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"30e31656-c02e-4c18-9c18-9237ee2ffc3b","type":"GlyphRenderer"},{"attributes":{"dimension":1,"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"},"ticker":{"id":"c74c807b-1217-4138-b5a1-ccb6d17b8623","type":"BasicTicker"}},"id":"68bc8ea5-5875-4834-b7dd-2dd79a753267","type":"Grid"},{"attributes":{"location":"top_left","plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"}},"id":"eab00344-9c05-4284-8e0f-c790f70a9a55","type":"Legend"},{"attributes":{"data_source":{"id":"35bc8213-dca9-49fb-87f4-0071a632b6c0","type":"ColumnDataSource"},"glyph":{"id":"f4f5a862-6bdf-4abb-b518-69a8ba70a201","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"b5e9f648-9387-46cd-bf22-7076f4bbbc01","type":"GlyphRenderer"},{"attributes":{"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"}},"id":"daebb845-a1e0-4428-b103-b60612dce82b","type":"PanTool"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"24262a3a-8fd8-4524-bbb8-303ac67aac63","type":"Rect"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"36957582-f02e-4288-9f1f-5345b2e72ce3","type":"BoxAnnotation"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(10.0, 11.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[8.0],"label":["(10.0, 11.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["10.5"],"y":[4.0]}},"id":"9ab89ec1-ec76-4fa5-b8a6-d9d3d1db0fea","type":"ColumnDataSource"},{"attributes":{"active_drag":"auto","active_scroll":"auto","active_tap":"auto","tools":[{"id":"daebb845-a1e0-4428-b103-b60612dce82b","type":"PanTool"},{"id":"d8252260-3140-4776-91bc-42b0e64ad648","type":"WheelZoomTool"},{"id":"06b4afb4-7bb6-46ac-9c53-bbea6e516856","type":"BoxZoomTool"},{"id":"948947de-7c58-461d-bf3a-ec2e61ea63db","type":"SaveTool"},{"id":"05463641-8428-4f2f-b89f-18bb63d4d780","type":"ResetTool"},{"id":"0fc0595c-20e4-4155-9952-f0e9279e20b3","type":"HelpTool"}]},"id":"fa59ddb2-308b-4d4b-9e99-f9783643a175","type":"Toolbar"},{"attributes":{"data_source":{"id":"4022af63-7973-432b-861a-3336867bb080","type":"ColumnDataSource"},"glyph":{"id":"e5db40a1-3deb-4443-a837-8a3069d3f097","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"85256c59-3d12-4dc8-baf0-cfebdbca625b","type":"GlyphRenderer"},{"attributes":{"overlay":{"id":"36957582-f02e-4288-9f1f-5345b2e72ce3","type":"BoxAnnotation"},"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"}},"id":"06b4afb4-7bb6-46ac-9c53-bbea6e516856","type":"BoxZoomTool"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(9.0, 10.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[21.0],"label":["(9.0, 10.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["9.5"],"y":[10.5]}},"id":"a9f3f694-5609-45d1-a09f-6ec5d84eb1ed","type":"ColumnDataSource"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(6.0, 7.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[19.0],"label":["(6.0, 7.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["6.5"],"y":[9.5]}},"id":"99311f5b-fdcf-4a8a-8c8d-31e4d008042b","type":"ColumnDataSource"},{"attributes":{"data_source":{"id":"9ab89ec1-ec76-4fa5-b8a6-d9d3d1db0fea","type":"ColumnDataSource"},"glyph":{"id":"24262a3a-8fd8-4524-bbb8-303ac67aac63","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"51ca274d-79fe-4de2-a783-c2a0db6c6c99","type":"GlyphRenderer"},{"attributes":{"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"}},"id":"0fc0595c-20e4-4155-9952-f0e9279e20b3","type":"HelpTool"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"f4f5a862-6bdf-4abb-b518-69a8ba70a201","type":"Rect"},{"attributes":{},"id":"7d94d38e-2fa4-4ae8-81eb-6f5bde8e9389","type":"BasicTickFormatter"},{"attributes":{"callback":null,"end":12.375,"start":2.625},"id":"cd84be21-f83b-4c40-8e58-fe3d690f2868","type":"Range1d"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["[3.0, 4.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[3.0],"label":["[3.0, 4.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["3.5"],"y":[1.5]}},"id":"ad6b0bb0-05c8-49b8-a399-3432a3dfac60","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"d0015d61-3eda-4edb-83da-50ac9c083a64","type":"Rect"},{"attributes":{"plot":null,"text":"Bee/Wasp Complaints by Month in 2016"},"id":"6b7ff7b2-7aba-47aa-b6e8-90e40a00682e","type":"Title"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(4.0, 5.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[30.0],"label":["(4.0, 5.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["4.5"],"y":[15.0]}},"id":"4022af63-7973-432b-861a-3336867bb080","type":"ColumnDataSource"},{"attributes":{"data_source":{"id":"99311f5b-fdcf-4a8a-8c8d-31e4d008042b","type":"ColumnDataSource"},"glyph":{"id":"8c705526-ca0e-410f-89f1-c6f23c82783e","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"853bbd00-6893-415a-b2fe-e32bef04c176","type":"GlyphRenderer"},{"attributes":{},"id":"f5aae2cb-9c83-4505-bc50-615dddf2f3d1","type":"BasicTicker"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"5ff79dfc-ede7-4f33-bde2-0c110b940cf2","type":"Rect"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(7.0, 8.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[26.0],"label":["(7.0, 8.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["7.5"],"y":[13.0]}},"id":"db17d211-36a6-4fb1-9410-1d2ba074739e","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"04e9855e-459c-48f6-9d6c-049304fee02a","type":"Rect"},{"attributes":{"plot":{"id":"37e49a83-e1b5-426c-a814-39379ee80ab4","subtype":"Chart","type":"Plot"}},"id":"05463641-8428-4f2f-b89f-18bb63d4d780","type":"ResetTool"},{"attributes":{"data_source":{"id":"ad6b0bb0-05c8-49b8-a399-3432a3dfac60","type":"ColumnDataSource"},"glyph":{"id":"d63bd37b-9cf7-4f7e-aa6b-6fb703dd6d0e","type":"Rect"},"hover_glyph":null,"nonselection_glyph":null,"selection_glyph":null},"id":"ad273627-a306-460c-a992-127b30d89e56","type":"GlyphRenderer"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"6a096aef-b96e-4e5d-acae-928e046d2d8b","type":"Rect"},{"attributes":{"fill_alpha":{"field":"fill_alpha"},"fill_color":{"field":"color"},"height":{"field":"height","units":"data"},"line_color":{"field":"line_color"},"width":{"field":"width","units":"data"},"x":{"field":"x"},"y":{"field":"y"}},"id":"8c705526-ca0e-410f-89f1-c6f23c82783e","type":"Rect"},{"attributes":{"callback":null,"column_names":["y","color","fill_alpha","label","line_color","x","height","width","line_alpha"],"data":{"chart_index":["(8.0, 9.0]"],"color":["#f22c40"],"fill_alpha":[0.8],"height":[42.0],"label":["(8.0, 9.0]"],"line_alpha":[1.0],"line_color":["black"],"width":[1.0],"x":["8.5"],"y":[21.0]}},"id":"35bc8213-dca9-49fb-87f4-0071a632b6c0","type":"ColumnDataSource"},{"attributes":{},"id":"c74c807b-1217-4138-b5a1-ccb6d17b8623","type":"BasicTicker"}],"root_ids":["37e49a83-e1b5-426c-a814-39379ee80ab4"]},"title":"Bokeh Application","version":"0.12.2"}};
+                var render_items = [{"docid":"9686fa8e-7caa-4614-963b-daf5b6ac29d9","elementid":"b50cb81c-5f22-4598-9063-4afe2bf93a8e","modelid":"37e49a83-e1b5-426c-a814-39379ee80ab4"}];
+                
+                Bokeh.embed.embed_items(docs_json, render_items);
+            });
+        });
+        </script>
+</div>
+
+<div class="mastfoot">
+  <div class="inner">
+    <p>Update names or stuff here</p>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -116,4 +175,4 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="static/js/creative.min.js"></script>
   </body>
-</html>
+  </html>
