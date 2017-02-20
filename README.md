@@ -1,8 +1,5 @@
 # Visualization of NYC 311 Service Requests
 
-## Live Demo (Alpha)
-[Click here for live demo.](http://ec2-52-23-243-48.compute-1.amazonaws.com/map)
-
 ### Requirements
 * MongoDB
 * Python 3
